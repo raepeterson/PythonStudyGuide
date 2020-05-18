@@ -1,0 +1,92 @@
+Version Control - control different versions of projects and keeps track of changes so project files can be restored
+Collaboration on Projects
+Use from command line
+
+Git Repository = just a folder in which you can edit your files, then run Git commands to store your changes.
+    Common to have one repository for one project.
+
+    Collaborators download a copy of the repository to their computers, make changes, then commit (make a new version)
+    of project to Git Repository
+
+What does it mean when we say a version control system is "distributed"?
+    Every copy of the repo stores all the old versions of the file - they're not just stored on one central server
+
+What is the value of a distributed version control system, as opposed to a centralized system?
+    If something happens to the version history on one repo, the history on any other copy can be used to restore
+
+How do you specify command line options to Git?
+    single dash followed by a letter or double dash then word
+
+A commit is a version of the project's files stored in the repository.
+
+A project directory is known in git terminology as the working directory because it's the directory where files are edited
+Whenever you exit a repo directory, be sure to change back into the directory with cd before issuing any Git commands
+
+3 states of files - the file cycle:
+Modified: Changes to files - you don't always want to include all modified files on a commit
+Staged: This is an index or staging area where you place files you are going to commit. aka cache
+Committed: Files that are actually added to the git repository - permanent part of the version history
+
+Run from shell:  always start with git and space then command line option
+Git commands won't work outside of Git repo
+
+git --help will give you a list of common commands
+
+git clone and git init: set up new repositories
+git add, git status, git commit: use when committing new versions
+git log: view a list of old commits
+git mv: move files tracked by Git
+git rm: remove files tracked by Git
+git push, git pull: synch commits w/remote repositories
+ls: lists files in a directory
+ls -a: lists all files, includes hidden files, in a directory
+cd: changes directory
+git init: initializes a repo directory in current directory by creating a new directory named doc git within it
+    the new git directory file is hidden (begins with a dot - .git) because you don't want to interact w/it
+git status: command to find out the current status or what's going on with git
+git add: adds a file to staging area
+    git stages a file as it existed at the time git add is ran
+    git diff will show any changes not included
+    git diff --stage: only the version that wasn't staged changed before you ran git add
+git commit -m "this commmit will: insert change explanation here": commits file with a message explaining change
+    message style should always start with "this commmit will... "
+git
+When you commit, Git will throw an error if your name and email isn't sotred - this info is req'd in case someone
+needs to contact you about the change. These are permanently stored but if you need to change values, here's how:
+    git config --global user.email "raepeterson@gmail.com"
+    git config --global user.name "Rachel P."
+
+git log: shows the author name and email, the date/time of commit and message
+git log -p: will show the lines that were added in each file
+git diff: will show file changes before commit
+    New lines will show with a + sign in front of them.
+    Removed lines will show with a - sign in front of them.
+    Changed lines will show with a - sign in front of the old version, and a + sign in front of the new version.
+
+Two ways to get a repository onto your computer:
+    1. clone from another machine
+    2. create a respository within a project directory on your machine
+
+Nano is a linux/terminal editor for commit messages.
+Using an editor for commit messages:
+If you leave off the -m command line option when running git commit, Git will launch a text editor so you can enter a commit message.
+Git launches the text editor with a pre-formatted file, with an empty line at the top for you to type your commit message, and some comments below that explaining what to do.
+We've set up Workspaces to use a text editor called nano for editing Git messages.
+With nano, you just type your message normally: "Add main site page"
+Next, we need to save the file and exit the editor.
+nano displays commands you can run across the bottom of the screen.
+The carat (^) character stands for the Ctrl key. So Ctrl-G will "Get Help", Ctrl-O will write out the file, etc.
+We want to press Ctrl-o to write out the file.
+The file name has already been set up for us, so we should just press Enter to accept the existing file name.
+Then we can press Ctrl-x to exit the editor.
+When the editor exits, Git will read your commit message from the saved file, and use that to complete the commit.
+This gives us the same result as if we had used the -m option to git commit.
+On other systems, Git uses an editor named vi by default.
+
+Find a Workspace on Treehouse that you've been working in for a while, and turn it into a Git repo. (Or install Git to your computer and convert your favorite project directory to a repo.) You can store HTML files for a website, code files for a program, or even plain text files. If you need a project idea, try filling a directory with text files, where each file is a recipe for a cookbook.
+
+In the main project directory, initialize a new Git repo.
+Stage some (or all) of the project files, whatever will make a sensible first commit.
+Make your commit. Be sure to use a commit message that completes the sentence "This commit will..."
+Keep staging and committing until all your project files are committed.
+As you keep working on your project files, commit all your changes to the repo.

@@ -1,0 +1,20 @@
+# First we need to declare the variable and give it an '=' symbol to give the variable an identity.
+# We write: favorite_color =
+
+# then, we need to define what the variable actually means.
+# The challenge asks to as for a user input which means we need the 'input()' function.
+# The parameters (the parentheses) will prompt the user with what you put in it.
+# we write: favorite_color = input("What is your favorite color?")
+
+# Now we have a variable named 'favorite_color' and it will equal whatever the user enters upon being prompted.
+# input always returns a string - you have to add int to input then wrap with () to coerce an integer
+    #ex age = int(input("How old are you?  "))
+
+# This is what the line of code should look like in the editor:
+
+favorite_color = input("What is your favorite color?")
+
+# Use the favorite_color variable in your print function to output the following message to the screen :
+# The color [USER INPUTTED COLOR] is a great color!
+
+print("The color {} is a great color!".format(favorite_color))

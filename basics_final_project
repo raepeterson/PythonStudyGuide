@@ -1,0 +1,56 @@
+#the only way that you can buy tickets, is through a single python script.
+#create a single console app to buy tickets using a command line program where no one would expect it.
+
+
+# User should be shown the number of ticket left remaining so s/he can understand importance of buying now
+# User should have a personalized experience to feel welcomed by the brand
+# User should have errors reported in a User-friendly manner
+# User should be able to request a certain amount tof tickets and be told the total cost so s/he can determine
+#       whether to buy
+# User should not be offered tickets if there aren't any available
+# User should be able to confirm purchase to avoid buying more than intended
+# Run this code until we run out of tickets
+
+# all caps is a naming convention for constants - it will never be changed while program runs
+TICKET_PRICE = 10
+
+tickets_remaining = 100
+
+while tickets_remaining >= 1:
+
+    #output [print] how many tickets are remaining using the tickets_remaining variable
+
+    print("There are {} tickets remaining.".format(tickets_remaining))
+
+    # Gather the user's name and assign it to a new variable
+    name = input("What is your name?   ")
+
+    # Prompt the user by name and ask how many tickets the would like
+    number_of_tickets = int(input("Hi {}, how many tickets would you like?  ".format(name)))
+    # Expect a ValueError and give a user-friendly message
+    if number_of_tickets <= 0:
+        raise ValueError ("Please pick a number bigger than zero")
+
+    # Calculate the price (number of tickets multiply by the price) and assign it to a variable
+    total_price = (TICKET_PRICE * number_of_tickets)
+
+    # Output the price to the screen
+    else:
+        print("OK, {}, you're buying {} tickets for a total of ${}".format (name, number_of_tickets, total_price))
+
+    # Prompt User if they want to proceed Y/N?
+    confirm_purchase = input("Do you want to proceed?  Type yes or no.  ")
+    if confirm_purchase == str("yes"):
+            # print to the screen "SOLD" to confirm purchase
+        print("SOLD!")
+            # and then decrement the tickets remaining by the number of tickets purchased
+
+        tickets_remaining = 100 - number_of_tickets
+        #could also right this like tickets_remaining -= number_of_tickets
+        print(tickets_remaining)
+            # Otherwise "Thanks, name"
+    elif confirm_purchase == str("no"):
+        print("OK {}, Thanks anyways!".format(name))
+
+#notify User tickets are sold out
+print("Sorry the tickets are all sold out! :(")

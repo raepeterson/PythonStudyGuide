@@ -1,0 +1,29 @@
+TICKET_PRICE = 10
+SERVICE_CHARGE = 2
+tickets_remaining = 100
+def calculate_price(no_of_tickets):
+    return (no_of_tickets * TICKET_PRICE + SERVICE_CHARGE)
+
+while tickets_remaining >= 1:
+    print("There are {} tickets remaining.".format(tickets_remaining))
+    name = input("What is your name?   ")
+    number_of_tickets = input("Hi {}, how many tickets would you like?  ".format(name))
+    try:
+        number_of_tickets = int(number_of_tickets)
+        #Raise ValueError if request is for more tickets than avaialble
+        if number_of_tickets > tickets_remaining:
+            raise ValueError("There are only {} tickets remaining".format(tickets_remaining))
+    except ValueError as err:
+        print("Oh no we ran into an issue. {} Try again!".format(err))
+    else:
+        total_price = calculate_price(number_of_tickets)
+        print("OK, {}, you're buying {} tickets for a total of ${}".format(name, number_of_tickets, total_price))
+    confirm_purchase = input("Do you want to proceed?  Type yes or no.  ")
+    if confirm_purchase == str("yes"):
+        print("SOLD!")
+        tickets_remaining = 100 - number_of_tickets
+        print(tickets_remaining)
+    elif confirm_purchase == str("no"):
+        print("OK {}, Thanks anyways!".format(name))
+
+print("Sorry the tickets are all sold out! :(")

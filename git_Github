@@ -1,0 +1,84 @@
+It's more common to host a central repo on a code hosting service. GitHub is the most popular Git service. Other alternatives that work similarly include BitBucket and GitLab.
+
+After setting up a repo and making some commits on your local machine, you create a new, empty repo on the hosting service's server.
+Then you add the new repo as a remote on your local repo, and push your commits there.
+Other developers can clone this central hosted repo to their machines.
+As you make more commits on your local repo, you can push them up to the central repo.
+Other developers can then pull the commits down to their cloned repos so they're up to date.
+Creating a GitHub repo
+Let's create a repo on GitHub, so we can push our medals repository code to it. To create a repo on GitHub, you'll need to create an account. Just visit https://github.com in your web browser, click the "Sign up" link [click], and follow the directions.
+
+Once you're signed up, we need to create a new repo. From any page on github.com, there should be a menu with a "New repository" link. Click that.
+We'll be asked to enter a repository name. Ideally repo names are all lower-case, and if there are multiple words they'll be separated with dashes.
+We can use any name we want, but let's just use medals.
+We'll enter a quick description of the repo: "Website for medals store."
+Now you can choose whether to make the repo public or private. Unless you have a paid account, you'll want to leave it set to "public".
+You may see a check box allowing you to "initialize this repository with a README".
+It says to "Skip this step if you're importing an existing repository", which we are, so leave it unchecked.
+There may also be options to add a .gitignore file or a license file; you'll want to leave those set to "None".
+When you're ready, click the button to create a repository.
+Adding the GitHub repo as a remote
+You'll be taken to the web page for your new repository. This is the URL where the public will go to view your project's source code in their web browsers.
+Since no code has been pushed here yet, you'll just see a set of tips on getting started. These include shell commands that have been customized to work for your repo. [Note: If you accidentally chose to create a README or license files when creating the repo, you won't see directions. If this happens, see the Troubleshooting section below.]
+There's a section for use "if you've done this kind of thing before".
+There are two protocol options here, "SSH" and "HTTPS". Notice that the URLs in all the commands change depending on which option you select.
+To get started, we'll want to select "HTTPS", although you might want to switch to "SSH" later. See below if you want more info on SSH.
+Let's go to our terminal, and run the commands they suggest in the section to "push an existing repository from the command line".
+git remote add origin [URL]
+As the GitHub instructions suggest, we'll give the remote repo a name of origin. This is the same name that would have been set up by default if we had cloned our local repo from the GitHub repo.
+Now we need the second argument, the URL of the remote repo. We'll just copy the URL from the command shown in our browser. Then we'll paste it into the terminal. [Note for Workspaces users: there is a known bug that may prevent you from pasting into the Console. If this is the case, you may have to type the URL manually.]
+Once all that's typed in, press Enter to run the command and it will add the GitHub repository as a remote repo.
+The second command GitHub recommends we run is a new command, git push.
+
+git push -u origin master
+Whereas the git pull command "pulls" changes from a remote repo into your local repo, the git push command "pushes" changes from your local repo into a remote repo. git pull gets changes made by others, git push shares changes you've made with others.
+GitHub is recommending a few arguments to git push as well.
+First is the -u command line option. The -u, or set-upstream option means that you want Git to remember the repo and branch you are about to specify, and make all future git push commands push to that repo and branch by default. That way, you won't have to specify a repo and branch each time you run git push.
+The next two arguments need to actually specify that default repo and branch.
+We'll use a repo of origin.
+And we'll specify the only branch that exists in the remote repo, the one branch that gets created by default, master.
+When we run the command, because we used an https URL for the remote repo, we'll be prompted for a user name. You should enter the user name you chose when setting up your GitHub account.
+Then we'll be prompted for a password. Again, enter the password you chose when setting up your account.
+If everything works, you'll see several messages as Git uploads our commits to the remote repo.
+$ git push -u origin master
+Username for 'https://github.com': example
+Password for 'https://example@github.com':
+Counting objects: 41, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (35/35), done.
+Writing objects: 100% (41/41), 4.31 KiB | 0 bytes/s, done.
+Total 41 (delta 14), reused 0 (delta 0)
+remote: Resolving deltas: 100% (14/14), done.
+To https://github.com/example/medals.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+Using SSH with GitHub
+SSH is an alternate, secure way to connect to GitHub. It's convenient because once it's properly set up, you won't have to type your username and password every time you push or pull from a GitHub repo. But setting it up does require some experience with the terminal.
+
+Sorry, but we can't help diagnose any issues you have with SSH; you'll be on your own.
+
+If you want to set it up, GitHub has a tutorial here.
+
+Troubleshooting
+If you accidentally created one or more files in the GitHub repo...
+You'll need to pull the remote files to your repo and merge them in before you can push. We haven't covered merging in this course, but we'll tell you enough to fix the current problem.
+
+On GitHub, click the "Clone or download" button and note the HTTPS URL for the repo.
+In your local repo, run git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git to add the GitHub repo as a remote.
+The GitHub repo contains some commits that you don't yet have locally. If you try to run git push -u origin master right now, you'll get this error:
+To https://github.com/jaymcgavren/medals.git
+! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/USERNAME/REPO_NAME.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first merge the remote changes (e.g.,
+hint: 'git pull') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+As the hint suggests, run git pull origin master. (You need to provide the remote name and branch name because an upstream repo and branch haven't been set yet.)
+Git will pull the commits from GitHub, and merge them with your local commits (meaning it will add the commits to your local history along with all your other commits).
+This triggers a "merge commit", so Git will launch an editor to get a commit message. Just save the default message, and exit the editor to complete the commit.
+Now you should be able to run git push -u origin master, and resume following our tutorial directions normally.
+A pre-populated GitHub repo
+Practice is important - we encourage you to set up a repo of your own and follow along with the demonstration in the video.
+
+We do realize this may not be practical for everyone, though. If you just want to browse the finished result, here's a GitHub repo we've set up.

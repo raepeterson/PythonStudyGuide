@@ -1,0 +1,22 @@
+git diff"
+
+git status:
+
+git log: the string is the SHA-1 checksum of all the changes in that commit.A checksum uniquely identifies a commit
+
+git rm: delete files from a working directory and from collaborator repositories
+    then run git commit -m "message here" to complete the deletion
+
+git mv: allows you to move or rename files to other folders in working directory.
+    Use to rename file extensions like .py ex: git mv silver.txt silver.html
+
+git reset HEAD: let's you unstage a file
+
+git checkout -- : discard changes to a file automatically (make sure you aren't deleting stuff you want)
+
+deletions can be undone with git checkout -- :  in this case, the change we want to discard is the deletion of the file -
+    this will bring the file back.
+
+ git revert: lets you specify a particular commit using a SHA. the SHA is used to specify which commit contains the set of changes you want to undo
+
+ git revert HEAD: shortcut to revert the most recent commit made
