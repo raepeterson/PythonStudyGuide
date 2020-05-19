@@ -82,3 +82,19 @@ A pre-populated GitHub repo
 Practice is important - we encourage you to set up a repo of your own and follow along with the demonstration in the video.
 
 We do realize this may not be practical for everyone, though. If you just want to browse the finished result, here's a GitHub repo we've set up.
+
+You can think of the GitHub UI as a Web version of the Git command line interface. There are ways to get all the same information that you would from the git log command, the git diff command, and more.
+We can click on any file name to look at the source code that file contains.
+On each page, the repository name, medals, is a link that will take us back to the main repository page.
+The main repository page has a link to the commit history, which was pushed up from your Git repo.
+All the commits you've made will be shown here, along with their commit messages.
+You can click on the partial SHA checksum shown next to each commit. That will take you to a page showing the changes made in that commit.
+This is a public repository, so anyone who has the link can see this page. When someone clicks that link, they'll be able to visit this page and view everything you see here. The only thing they won't be able to do is make changes via their browser.
+They can, however, use Git to clone their own copy of your code on their computers, which they can then make changes to.
+Because this is set up as a public repository, anyone with the URL can clone it, even if they don't have a GitHub account.
+On your repo's main page, there should be a "Clone or Download" button.
+That will reveal the Git URL for the repo.
+Anyone can copy this URL and use it to clone the repo.
+From a terminal, type git clone, followed by a space, and paste the Git URL that you copied from GitHub.
+git clone https://github.com/example/medals.git
+Other people won't be able to push commits directly to your GitHub repo. But they can make a "fork" of the repo and push to that. For more info, see: Fork A Repo - User Documentation

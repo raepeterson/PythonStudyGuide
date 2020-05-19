@@ -1,0 +1,12 @@
+#Python Basics Study Guide & Practice Exercises
+
+This is a collection of my own practice exercises for Code Lou May 2020 Python class.
+**Warning:** These are incredibly boring. Just tryin' to learn Python and get better at Github at same time.
+I find it helpful to keep my exercises named by function or method for now - helps me find stuff examples fast.
+
+###Running
+
+Pull then run any .py file from your command line or terminal.
+
+If you don't have Python installed on your machine, here's a great guide:
+[GitHub](https://github.com/pettarin/python-on-windows/blob/master/README.md)
